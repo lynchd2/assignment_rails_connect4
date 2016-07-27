@@ -1,17 +1,22 @@
 <h1>Boards#show</h1>
 <p>Find me in app/views/boards/show.html.erb</p>
+
+
+
 <% col = 0 %>
-<button class="submit-button" name="button" type="submit">Drop Piece</button>
-<div class="all_buttons">
-  <% 7.times do %>
-    <div class="button">
-      <%= radio_button_tag('color', col) %>
-      <% col += 1 %>
-    </div>
-  <% end %>
-</div>
+<%= form_tag('/boards') do %>
+  <div class="all_buttons">
+    <% 7.times do %>
+      <div class="button">
+        <%= radio_button_tag('number', col) %>
+        <% col += 1 %>
+      </div>
+    <% end %>
+  </div>
+  <%= submit_tag "Save" %>
+<% end %>
 <div class="container">
-  <% @board.grid.transpose.reverse.each do |rows| %>
+  <% @grid.transpose.reverse.each do |rows| %>
     <% col_number = 0 %>
     <div class="row">
     <% rows.each do |space| %>
@@ -24,3 +29,4 @@
 
 
 
+<%= @params %>

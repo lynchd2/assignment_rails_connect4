@@ -3,7 +3,7 @@ module BoardsHelper
     if space == []
       "empty"
     else
-      space.color.to_s
+      space["color"]
     end
   end
 end
